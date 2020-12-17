@@ -1,0 +1,162 @@
+# membuat fungsi authentifikasi sederhana
+def get_login():
+    print('=' * 20)
+    get_login = input('Login sebagai user/admin? (user/admin) :')
+    if get_login == 'user':
+        login_user()
+    elif get_login == 'admin':
+        login_admin()
+    else:
+        print('Input Salah')
+        print('Masukan input dengan benar')
+
+def login_user():
+    print('Halaman Login User')
+    username = input('Masukan username anda: ')
+    password = input('Masukan password: ')
+ 
+    if username == 'user' and password == 'userpass':
+        print('Login berhasil...\n\n')
+        main_menu()
+    else:
+        print('Login gagal coba lagi..')
+        get_login()
+ 
+def login_admin():
+    print('Halaman Login Admin')
+    username = input('Masukan username admin anda: ')
+    password = input('masukan password: ')
+ 
+    if username == 'admin' and password == 'adminpass':
+        print('Login berhasil...\n\n')
+        menu_admin()
+    else:
+        print('Login gagal coba lagi..')
+        get_login()
+
+def main_menu():
+    # membuat daftar menu pada aplikasi Bank Sampah
+    print('=' * 10, 'MAIN MENU APLIKASI BANK SAMPAH', '=' * 10)
+    print('Selamat Datang di Aplikasi Bank Sampah')
+    print('=' * 10, 'Masukan Input Aplikasi', '=' * 10)
+    print('1. Tabungan Sampah')
+    print('2. Kalkulator')
+    print('3. Exit program')
+ 
+    # input pilihan
+    pilihan = input('Pilih Menu: ')
+ 
+    # pilihan menu
+    if pilihan == '1':
+        tabungan()
+    elif pilihan == '2':
+        kalkulator()
+    else:
+        print('program exit')
+        exit()
+
+def tabungan():
+    # masukan input dari user
+    print('=' * 10, 'MENU TABUNGAN BANK SAMPAH', '=' * 10)
+    print('1. Botol Plastik')
+    print('2. Kaleng')
+    print('3. Exit')
+ 
+    # input pilihan
+    pilihan = input('Pilih Menu: ')
+ 
+    # pilihan menu
+    if pilihan == '1':
+        print('Tabungan Botol Plastik')
+        print('\n')
+        kg=int(input('Masukkan berat sampah (kg) : '))
+        print('Tabungan Botol Plastik Anda :','Rp',botol_plastik(kg))
+        print('\n')
+    elif pilihan == '2':
+        print('Tabungan Kaleng')
+        print('\n')
+        kg=int(input('Masukkan berat sampah (kg) : '))
+        print('Tabungan Kaleng Anda :','Rp',kaleng(kg))
+        print('\n')
+    else:
+        print('program exit')
+        exit()
+
+def botol_plastik(kg):
+    harga=4000*kg
+    return harga
+    
+def kaleng(kg):
+    harga=5000*kg
+    return harga
+    
+def menu_admin():
+    # membuat daftar menu pada aplikasi Bank Sampah
+    print('=' * 10, 'MENU ADMIN APLIKASI BANK SAMPAH', '=' * 10)
+    print('Selamat Datang Admin di Aplikasi Bank Sampah')
+    print('=' * 10, 'Masukan Input Aplikasi', '=' * 10)
+    print('1. Saldo')
+    print('2. Kalkulator')
+    print('3. Exit program')
+ 
+    # input pilihan
+    pilihan = input('Pilih Menu: ')
+ 
+    # pilihan menu
+    if pilihan == '1':
+        harga1=int(input('Masukan harga sampah botol plastik per kg:'))
+        kg1=int(input('Masukan berat sampah botol plastik (kg):'))
+        harga2=int(input('Masukan harga sampah kaleng per kg:'))
+        kg2=int(input('Masukan berat sampah kaleng (kg):'))
+        total=(harga1*kg1)+(harga2*kg2)
+        print('Total Saldo=', 'Rp', total)
+    elif pilihan == '2':
+        kalkulator()
+    else:
+        print('program exit')
+        exit()
+    
+# membuat kalkulator
+def kalkulator():
+    print('=' * 10)
+    print('Program Kalkulator')
+ 
+    print()
+    print('Operator')
+    print('=' * 10)
+    print('1. Tambah')
+    print('2. Kurang ')
+    print('3. Bagi')
+    print('4. Kali')
+    print('5. Sisa bagi/modulus')
+ 
+    a = int(input('Masukan bilangan pertama: '))
+    b = int(input('Masukan bilangan ke-dua: '))
+ 
+    operator = input('Masukan operator: ')
+ 
+    if operator == '1':
+        print('hasil dari {} + {} = {}'.format(a, b, a + b))
+    elif operator == '2':
+        print('hasil dari {} - {} adalah {}'.format(a, b, a - b))
+    elif operator == '3':
+        print('hasil dari {} / {} = {}'.format(a, b, a / b))
+    elif operator == '4':
+        print('hasil dari {} * {} = {}'.format(a, b, a * b))
+    elif operator == '5':
+        print('hasil dari {} % {} = {}'.format(a, b, a % b))
+    else:
+        print('masukan input yang benar sesuai menu diatas')
+
+def exit():
+    print('Anda telah keluar dari aplikasi')
+
+# main program
+if __name__=='__main__':
+    get_login()
+
+input("kembali Ke menu (Enter) ")
+main_menu()
+menu_admin()
+print("")
+loop = "y"
